@@ -45,4 +45,12 @@ fi
 
 echo "🎙  launching Cream Typer — Caps Lock to dictate, Ctrl+Option+U/R/E to switch language."
 # Not exec'd, so the EXIT trap still fires to stop the server we started.
-. venv/bin/activate && python -m cream_typer
+# When launched from the .app, CREAM_PYTHON points at the bundled python copy
+# (so NSBundle.mainBundle resolves to our .app → Dock shows "Cream Typer Custom"
+# + our icon, not "Python") and CREAM_SITE feeds it the venv's packages. In dev
+# (`make up`) neither is set → use the venv directly.
+if [ -n "$CREAM_PYTHON" ]; then
+    "$CREAM_PYTHON" "$ROOT/scripts/_app_main.py"
+else
+    . venv/bin/activate && python -m cream_typer
+fi
