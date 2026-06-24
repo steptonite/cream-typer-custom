@@ -16,12 +16,12 @@ This fork is packaged to be reproducible — it survives a clean macOS reinstall
 
 - **Streaming dictation (opt-in)** — a second mode that types each sentence into the field *as you speak* instead of one transcription at the end. Audio is cut on natural pauses (never mid-word), transcribed sentence-by-sentence by a serialized worker (so word order is preserved and whisper is never hit concurrently on 8 GB), and typed via synthetic Unicode key events — **no clipboard involved**, so your clipboard is never clobbered mid-dictation. Pick **Batch** (default) or **Streaming** in **Settings → Dictation**. See [Streaming dictation](#streaming-dictation).
 - **Focus-aware buffering + status HUD** — streaming watches where the keyboard focus is. If you switch away to somewhere with no text field (Spotlight, the desktop, a window with no input), it *stops typing blind* and latches into **buffer mode**: the rest of the dictation is collected and dropped onto the clipboard in one piece at Stop, so nothing lands in the wrong place. A small floating **status pill** near the menu-bar icon shows the live state (listening / recognizing / buffering) — visible even when your dictation hotkey is a silent key with no Caps-Lock LED.
-- **One-command launch** — `make up` (or the `cream` alias) starts the whisper server in the background *and* the app; quitting stops both. No two-terminal dance.
+- **One-command launch** — `make up` (or the `pysar` alias) starts the whisper server in the background *and* the app; quitting stops both. No two-terminal dance.
 - **Real `.app` in /Applications** — `make app` builds a Dock-less menu-bar agent (`LSUIElement`) with a custom icon, launchable from Spotlight/Launchpad. No Terminal window, no Dock tile, no Python rocket.
 - **Language hotkeys** — hold `Ctrl+Option` + a letter to switch output language without opening the menu: `U` → 🇺🇦 Ukrainian, `R` → 🇷🇺 Russian, `E` → 🌐 any-language → English. The menu-bar icon shows the active language's flag. Default mode is `uk`. Every shortcut (dictation toggle, language switches, profile sets) is freely **reassignable** in **Settings → Hotkeys** — captured live, no relaunch.
 - **VAD anti-hallucination** — the server runs with Silero VAD, so silence never reaches the model and Whisper stops inventing YouTube-style "subtitle credits" on quiet input. Also uses `--split-on-word` (no mid-word splits) and `--suppress-nst`.
 - **Clean paste** — the transcriber only normalizes whitespace/newlines, so a word never lands split across a line. No content-based text filtering: real words are never dropped (the silence-hallucination problem is solved by VAD instead).
-- **Optional recording archive** — off by default (audio stays in memory). Toggle **💾 Save recordings** in the menu bar to keep the last N WAVs on disk (5/10/20, auto-pruned) in `~/Library/Application Support/Cream Typer/recordings/`, so a failed or aborted dictation can be re-transcribed instead of re-spoken. **📂 Open recordings folder** reveals them in Finder. Settings persist across launches.
+- **Optional recording archive** — off by default (audio stays in memory). Toggle **💾 Save recordings** in the menu bar to keep the last N WAVs on disk (5/10/20, auto-pruned) in `~/Library/Application Support/Pysar/recordings/`, so a failed or aborted dictation can be re-transcribed instead of re-spoken. **📂 Open recordings folder** reveals them in Finder. Settings persist across launches.
 - **Speech profiles** — per-language priming sentences that bias Whisper toward your jargon (tool names, slang, proper nouns) so it stops mangling them. Toggle profiles per language; the composed prompt is capped to a token budget. A built-in **"Copy AI prompt"** hands any chat model a meta-prompt that returns importable profile JSON — pasted back, the import is tolerant of smart quotes and trailing commas. There's a lot here, so it has its own guide: **[docs/speech-profiles.md](docs/speech-profiles.md)**.
 - **Profile sets** — bundle several profiles into a named set and switch the whole set on with one key (`Ctrl+Option+<digit>` by default, reassignable). The Settings list shows which set is **currently active** and clears that mark the moment you hand-edit a toggle. The set editor shows a **per-language token meter** so you can see at a glance when a selection overflows Whisper's prompt budget.
 - **Drill-in Settings window** — a native WebKit panel instead of a tall menu, split into focused screens: a main page (audio, recordings, theme, UI language) with drill-ins for **Speech profiles** (profile editor + sets) and **Hotkeys** (dictation, language and profile-set shortcuts). **Auto / Light / Dark** themes with a live accent.
@@ -51,7 +51,7 @@ make all            # setup + app, assuming cmake/git/python are already present
 ```
 
 `make setup` (venv + whisper.cpp + ~550 MB speech model + Silero VAD) and
-`make app` (build `Cream Typer.app` into /Applications + the `cream` alias) can
+`make app` (build `Pysar.app` into /Applications + the `pysar` alias) can
 still be run separately.
 
 Then launch **Pysar** from Spotlight. On first run, grant **Input Monitoring** and **Accessibility** to *Pysar* in System Settings → Privacy & Security (macOS prompts for Microphone automatically), then relaunch it.
@@ -146,7 +146,7 @@ Grant these to **Pysar** (the app), not Python or Terminal. macOS does not promp
 
 ```
 make setup        # full install: venv + whisper.cpp + speech & VAD models
-make app          # install /Applications/Cream Typer.app + `cream` alias
+make app          # install /Applications/Pysar.app + `pysar` alias
 make up           # run server (bg) + app from this terminal
 make icon         # regenerate the app icon from scripts/make_icon.py
 make whisper-vad  # (re)download the Silero VAD model
