@@ -30,9 +30,10 @@ rm -rf "$APP" "$OLD_APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 
 # ── Info.plist (LSUIElement = menu-bar agent, no Dock icon) ───────────────────
-# NOTE: CFBundleIdentifier is still com.neclco.creamtyper so that macOS keeps the
-# existing TCC permissions (Input Monitoring / Accessibility) across the rename.
-# Changing the bundle id is a separate, deliberate step (see docs/rebrand-pysar.md).
+# NOTE: CFBundleIdentifier is com.steptonite.pysar (own namespace, not the
+# upstream neclco one). macOS keys TCC permissions by bundle id, so the FIRST
+# launch after this change needs Input Monitoring + Accessibility re-granted to
+# Pysar in System Settings → Privacy & Security. See docs/rebrand-pysar.md.
 cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -40,7 +41,7 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 <dict>
     <key>CFBundleName</key><string>Pysar</string>
     <key>CFBundleDisplayName</key><string>Pysar</string>
-    <key>CFBundleIdentifier</key><string>com.neclco.creamtyper</string>
+    <key>CFBundleIdentifier</key><string>com.steptonite.pysar</string>
     <key>CFBundleExecutable</key><string>pysar</string>
     <key>CFBundleIconFile</key><string>Pysar</string>
     <key>CFBundlePackageType</key><string>APPL</string>
