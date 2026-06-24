@@ -2,7 +2,7 @@
 # One-command install for Pysar.
 #
 # From a clean Mac, with nothing checked out:
-#   curl -fsSL https://raw.githubusercontent.com/steptonite/cream-typer-custom/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/steptonite/pysar/main/install.sh | bash
 #
 # Or, from inside a clone:
 #   ./install.sh
@@ -16,8 +16,8 @@
 #   5. runs `make app` (the menu-bar app into /Applications + the `pysar` alias).
 set -euo pipefail
 
-REPO_URL="https://github.com/steptonite/cream-typer-custom.git"
-CLONE_DIR="${PYSAR_DIR:-$HOME/code/cream-typer}"
+REPO_URL="https://github.com/steptonite/pysar.git"
+CLONE_DIR="${PYSAR_DIR:-$HOME/code/pysar}"
 
 say()  { printf "\033[1m%s\033[0m\n" "$1"; }
 die()  { printf "\033[31m❌ %s\033[0m\n" "$1" >&2; exit 1; }

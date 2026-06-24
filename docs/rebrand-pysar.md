@@ -71,7 +71,24 @@ gone, `Pysar.app` present; plist DisplayName/Executable/IconFile = Pysar (id kep
 (not brand-facing — renaming risks breaking the native↔JS bridge for zero user benefit);
 `make_icon.py` "cream"/"amber-cream" = colour names, not the brand.
 **Can break:** an old `alias cream=` may still sit in `~/.zshrc` (harmless — still
-runs `make up`); GitHub repo `cream-typer-custom` not renamed so `REPO_URL` is unchanged.
+runs `make up`).
+
+### Post-phase follow-ups (after the 5 phases)
+
+- **GitHub repo renamed** `steptonite/cream-typer-custom` → `steptonite/pysar`
+  (`gh repo rename`); `origin` remote + `REPO_URL`/curl in `install.sh` + README
+  updated; `CLONE_DIR` default → `$HOME/code/pysar` (fresh installs only).
+- **Local working dir kept** as `~/code/cream-typer` on purpose: the in-repo
+  `venv/` bakes absolute paths into its console-script shebangs + `activate`, and
+  the installed `.app` launcher bakes an absolute `ROOT` — moving the folder breaks
+  both. Renaming it would need a `make setup` venv rebuild + `make app`; not worth
+  it for a cosmetic local name.
+- **Icon redesigned** (`scripts/make_icon.py`): pen-nib (scribe) on a slate-ink
+  squircle with one ochre accent — replaces the old cream-typer mic/cream colours.
+  Regenerated `assets/Pysar.icns`, rebuilt the `.app`.
+- **No-Dock-icon is by design:** the app is `LSUIElement` (menu-bar agent), so it
+  has no permanent Dock tile or ⌘-Tab entry; the menu bar shows the language flag.
+  The `.icns` surfaces in Finder/Spotlight/Settings window.
 
 ### original plan
 
