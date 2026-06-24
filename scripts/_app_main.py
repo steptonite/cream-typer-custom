@@ -5,7 +5,7 @@ The bundle ships a *copy* of the framework Python binary inside
 (giving the Dock our name + icon natively instead of "Python"). That copy is a
 bare interpreter with no venv context, so we splice the project's venv
 site-packages in here — `addsitedir` also runs its .pth files, which is what
-activates the editable `cream_typer` install.
+activates the editable `pysar` install.
 """
 
 import os
@@ -17,4 +17,4 @@ if _sp and os.path.isdir(_sp):
 
 import runpy  # noqa: E402
 
-runpy.run_module("cream_typer", run_name="__main__", alter_sys=True)
+runpy.run_module("pysar", run_name="__main__", alter_sys=True)

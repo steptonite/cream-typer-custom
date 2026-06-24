@@ -4,7 +4,7 @@ JS→Python message router. The AppKit/WebKit glue is not exercised here."""
 import json
 import re
 
-from cream_typer.backend.settings_window import build_html, dispatch
+from pysar.backend.settings_window import build_html, dispatch
 
 
 def _state(**over):

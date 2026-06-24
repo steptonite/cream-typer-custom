@@ -6,7 +6,7 @@ whether a captured key is allowed and which action it fires. The CGEventTap glue
 in the backend isn't exercised here.
 """
 
-from cream_typer.config import (
+from pysar.config import (
     DEFAULT_HOTKEY,
     DEFAULT_LANG_HOTKEYS,
     LANG_HOTKEY_ACTIONS,
@@ -92,7 +92,7 @@ def test_only_a_few_languages_have_a_default_binding():
 
 # ── profile-set hotkeys (⌃⌥<digit>) ──────────────────────────────────────────
 def test_set_hotkey_bindings_indexed_digits():
-    from cream_typer.config import set_hotkey_bindings
+    from pysar.config import set_hotkey_bindings
 
     b = set_hotkey_bindings([{"name": "Dev"}, {"name": "VFX"}])
     assert [x["action"] for x in b] == ["set:0", "set:1"]
@@ -101,13 +101,13 @@ def test_set_hotkey_bindings_indexed_digits():
 
 
 def test_set_hotkey_bindings_capped_at_nine():
-    from cream_typer.config import MAX_PROFILE_SETS, set_hotkey_bindings
+    from pysar.config import MAX_PROFILE_SETS, set_hotkey_bindings
 
     assert len(set_hotkey_bindings([{"name": str(i)} for i in range(20)])) == MAX_PROFILE_SETS
 
 
 def test_set_hotkey_label():
-    from cream_typer.config import set_hotkey_label
+    from pysar.config import set_hotkey_label
 
     assert set_hotkey_label(0) == "⌃⌥1"
     assert set_hotkey_label(8) == "⌃⌥9"

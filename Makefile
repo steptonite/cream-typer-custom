@@ -36,7 +36,7 @@ install: venv
 	$(PY) pip install -q -e '.[macos,dev]'
 
 run:
-	$(PY) python -m cream_typer
+	$(PY) python -m pysar
 
 # One command: start whisper server (background) + app (foreground).
 up:

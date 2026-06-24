@@ -35,7 +35,7 @@ def _wire(frontmost_pid):
     clipboard-restore thread, and a class-level patch would let that stale thread
     from one test write into the next test's store (the methods are looked up on
     the class at call time). Instance attributes keep each test isolated."""
-    from cream_typer.backend import Paster
+    from pysar.backend import Paster
 
     p = Paster()
     store = {"clip": b""}

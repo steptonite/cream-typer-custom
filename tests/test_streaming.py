@@ -7,9 +7,9 @@ import wave
 
 import numpy as np
 
-from cream_typer import app as app_mod
-from cream_typer.app import VoiceTyper
-from cream_typer.recorder import pcm_to_wav
+from pysar import app as app_mod
+from pysar.app import VoiceTyper
+from pysar.recorder import pcm_to_wav
 
 
 class _FakePaster:

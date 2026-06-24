@@ -60,5 +60,5 @@ echo "🎙  launching Pysar — Caps Lock to dictate, Ctrl+Option+U/R/E to switc
 if [ -n "$CREAM_PYTHON" ]; then
     "$CREAM_PYTHON" "$ROOT/scripts/_app_main.py"
 else
-    . venv/bin/activate && python -m cream_typer
+    . venv/bin/activate && python -m pysar
 fi

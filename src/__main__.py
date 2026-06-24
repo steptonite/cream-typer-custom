@@ -1,4 +1,4 @@
-"""Lets the package run as `python -m cream_typer`."""
+"""Lets the package run as `python -m pysar`."""
 
 from .app import main
 

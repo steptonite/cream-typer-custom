@@ -46,7 +46,7 @@ fi
 # ── 3. Locate or clone the repo ─────────────────────────────────────────────
 # If this script lives inside a clone (has a Makefile next to it), use that.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" >/dev/null 2>&1 && pwd)"
-if [ -f "$SCRIPT_DIR/Makefile" ] && grep -q "cream_typer" "$SCRIPT_DIR/Makefile" 2>/dev/null; then
+if [ -f "$SCRIPT_DIR/Makefile" ] && grep -q "pysar" "$SCRIPT_DIR/Makefile" 2>/dev/null; then
     ROOT="$SCRIPT_DIR"
     say "📂 Using existing clone at $ROOT"
 elif [ -d "$CLONE_DIR/.git" ]; then

@@ -1,7 +1,7 @@
 """Guards for the UI string tables: the two languages must stay in lockstep
 (same keys), interpolation must work, and lookups must never blank out."""
 
-from cream_typer.i18n import UI_LANGS, strings, t
+from pysar.i18n import UI_LANGS, strings, t
 
 
 def test_languages_have_identical_key_sets():

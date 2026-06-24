@@ -9,32 +9,32 @@ import pytest
 
 
 def test_package_imports():
-    import cream_typer
+    import pysar
 
-    assert hasattr(cream_typer, "__version__")
-    assert isinstance(cream_typer.__version__, str)
+    assert hasattr(pysar, "__version__")
+    assert isinstance(pysar.__version__, str)
 
 
 def test_config_imports():
-    from cream_typer import config
+    from pysar import config
 
     assert hasattr(config, "MODES")
     assert hasattr(config, "MENU_MODES")
 
 
 def test_transcriber_imports():
-    from cream_typer.transcriber import is_alive, transcribe  # noqa: F401
+    from pysar.transcriber import is_alive, transcribe  # noqa: F401
 
 
 def test_recorder_imports():
-    from cream_typer.recorder import AudioRecorder  # noqa: F401
+    from pysar.recorder import AudioRecorder  # noqa: F401
 
 
 @pytest.mark.skipif(sys.platform != "darwin", reason="macOS-only backend")
 def test_macos_backend_imports():
-    from cream_typer.backend import HotkeyListener, Paster, Tray  # noqa: F401
+    from pysar.backend import HotkeyListener, Paster, Tray  # noqa: F401
 
 
 @pytest.mark.skipif(sys.platform != "darwin", reason="app.py pulls in the macOS backend")
 def test_app_imports():
-    from cream_typer.app import VoiceTyper, main  # noqa: F401
+    from pysar.app import VoiceTyper, main  # noqa: F401

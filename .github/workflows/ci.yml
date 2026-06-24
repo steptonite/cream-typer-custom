@@ -40,7 +40,7 @@ jobs:
           pip install -e '.[macos,dev]'
       - name: Smoke import (no CGEventTap)
         run: |
-          python -c "from cream_typer import config, recorder, transcriber; print('imports OK')"
-          python -c "from cream_typer.backend import HotkeyListener, Paster, Tray; print('backend OK')"
+          python -c "from pysar import config, recorder, transcriber; print('imports OK')"
+          python -c "from pysar.backend import HotkeyListener, Paster, Tray; print('backend OK')"
       - name: Pytest
         run: pytest -q

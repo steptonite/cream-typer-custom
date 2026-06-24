@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from cream_typer.segmenter import Segmenter
+from pysar.segmenter import Segmenter
 
 SR = 16000
 BLOCK = 1600  # 0.1 s per block → easy arithmetic

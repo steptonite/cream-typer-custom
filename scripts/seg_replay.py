@@ -18,7 +18,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from cream_typer.config import (
+from pysar.config import (
     CHUNK_SIZE,
     MAX_SEG_SEC,
     MIN_SEG_SEC,
@@ -26,9 +26,9 @@ from cream_typer.config import (
     SAMPLE_RATE,
     SILENCE_MARGIN,
 )
-from cream_typer.recorder import pcm_to_wav
-from cream_typer.segmenter import Segmenter
-from cream_typer.transcriber import is_alive, transcribe
+from pysar.recorder import pcm_to_wav
+from pysar.segmenter import Segmenter
+from pysar.transcriber import is_alive, transcribe
 
 REC_DIR = Path.home() / "Library" / "Application Support" / "Cream Typer" / "recordings"
 

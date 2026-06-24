@@ -4,7 +4,7 @@ Event flow:
   Caps Lock (tap 1) → start recording
   Caps Lock (tap 2) → stop → Whisper → clipboard → Cmd+V → restore clipboard
 
-Platform-specific adapters (hotkey, paste, tray) live in cream_typer.backend.
+Platform-specific adapters (hotkey, paste, tray) live in pysar.backend.
 """
 
 import queue

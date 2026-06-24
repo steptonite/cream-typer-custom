@@ -1,6 +1,6 @@
 """profiles.py tests — composition, budget, and tolerant import parsing."""
 
-from cream_typer.profiles import (
+from pysar.profiles import (
     DEFAULT_PROFILES,
     PROMPT_TOKEN_BUDGET,
     active_for_language,
@@ -219,8 +219,8 @@ def test_regroup_active_empty():
 
 # ── profile-set persistence normalization (recordings._norm_profile_sets) ────
 def test_norm_profile_sets_cleans_and_caps():
-    from cream_typer.config import MAX_PROFILE_SETS
-    from cream_typer.recordings import _norm_profile_sets
+    from pysar.config import MAX_PROFILE_SETS
+    from pysar.recordings import _norm_profile_sets
 
     raw = [
         {"name": "  Dev  ", "members": ["A", 1, "B"]},  # trims name, drops non-str member
@@ -235,14 +235,14 @@ def test_norm_profile_sets_cleans_and_caps():
 
 
 def test_norm_profile_sets_keeps_override_binding():
-    from cream_typer.recordings import _norm_profile_sets
+    from pysar.recordings import _norm_profile_sets
 
     out = _norm_profile_sets([{"name": "Dev", "members": [], "keycode": 18, "mods": ["control"]}])
     assert out == [{"name": "Dev", "members": [], "keycode": 18, "mods": ["control"]}]
 
 
 def test_set_hotkey_bindings_honor_override():
-    from cream_typer.config import set_hotkey_bindings
+    from pysar.config import set_hotkey_bindings
 
     b = set_hotkey_bindings([{"name": "X", "keycode": 99, "mods": ["command"]}, {"name": "Y"}])
     assert b[0]["keycode"] == 99 and b[0]["mods"] == ["command"]  # custom

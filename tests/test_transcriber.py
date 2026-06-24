@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 import requests
 
-from cream_typer.transcriber import is_alive, transcribe
+from pysar.transcriber import is_alive, transcribe
 
 
 def _wav_bytes() -> bytes:
@@ -14,7 +14,7 @@ def _wav_bytes() -> bytes:
 
 
 def test_transcribe_connection_error_returns_friendly_message():
-    with patch("cream_typer.transcriber.requests.post") as mock_post:
+    with patch("pysar.transcriber.requests.post") as mock_post:
         mock_post.side_effect = requests.exceptions.ConnectionError()
         text, err = transcribe(_wav_bytes(), mode="ru")
 
@@ -24,7 +24,7 @@ def test_transcribe_connection_error_returns_friendly_message():
 
 
 def test_transcribe_success_returns_text():
-    with patch("cream_typer.transcriber.requests.post") as mock_post:
+    with patch("pysar.transcriber.requests.post") as mock_post:
         resp = MagicMock()
         resp.json.return_value = {"text": "  hello, world  "}
         resp.raise_for_status = MagicMock()
@@ -37,7 +37,7 @@ def test_transcribe_success_returns_text():
 
 
 def test_transcribe_empty_text_returns_none_none():
-    with patch("cream_typer.transcriber.requests.post") as mock_post:
+    with patch("pysar.transcriber.requests.post") as mock_post:
         resp = MagicMock()
         resp.json.return_value = {"text": "   "}
         resp.raise_for_status = MagicMock()
@@ -51,7 +51,7 @@ def test_transcribe_empty_text_returns_none_none():
 
 @pytest.mark.parametrize("mode", ["ru", "en", "translate", "ja", "ar"])
 def test_transcribe_passes_mode_specific_language(mode):
-    with patch("cream_typer.transcriber.requests.post") as mock_post:
+    with patch("pysar.transcriber.requests.post") as mock_post:
         resp = MagicMock()
         resp.json.return_value = {"text": "ok"}
         resp.raise_for_status = MagicMock()
@@ -64,12 +64,12 @@ def test_transcribe_passes_mode_specific_language(mode):
 
 
 def test_is_alive_returns_false_on_connection_error():
-    with patch("cream_typer.transcriber.requests.get") as mock_get:
+    with patch("pysar.transcriber.requests.get") as mock_get:
         mock_get.side_effect = requests.exceptions.ConnectionError()
         assert is_alive() is False
 
 
 def test_is_alive_returns_true_on_any_response():
-    with patch("cream_typer.transcriber.requests.get") as mock_get:
+    with patch("pysar.transcriber.requests.get") as mock_get:
         mock_get.return_value = MagicMock(status_code=200)
         assert is_alive() is True

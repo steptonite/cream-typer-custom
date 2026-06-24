@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 # Project metadata
 # ─────────────────────────────────────────────────────────────────────────────
 [project]
-name = "cream-typer"
+name = "pysar"
 version = "0.1.0"
 description = "Voice translation in any direction, locally on Apple Silicon. Tap Caps Lock, speak any language, get any other."
 readme = "README.md"
@@ -77,7 +77,7 @@ dev = [
 ]
 
 [project.scripts]
-cream-typer = "cream_typer.app:main"
+pysar = "pysar.app:main"
 
 [project.urls]
 Homepage = "https://neclco.com"
@@ -86,13 +86,13 @@ Issues = "https://github.com/adjacentai/cream-typer/issues"
 Changelog = "https://github.com/adjacentai/cream-typer/blob/main/CHANGELOG.md"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Setuptools — package files live directly in `src/`, mapped to `cream_typer`.
+# Setuptools — package files live directly in `src/`, mapped to `pysar`.
 # ─────────────────────────────────────────────────────────────────────────────
 [tool.setuptools]
-packages = ["cream_typer", "cream_typer.backend"]
+packages = ["pysar", "pysar.backend"]
 
 [tool.setuptools.package-dir]
-cream_typer = "src"
+pysar = "src"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Ruff — lint + format
@@ -127,7 +127,7 @@ ignore = [
 "src/backend/settings_window.py" = ["N802"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["cream_typer"]
+known-first-party = ["pysar"]
 
 [tool.ruff.format]
 quote-style = "double"

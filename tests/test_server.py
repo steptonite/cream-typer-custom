@@ -1,6 +1,6 @@
 """On-demand whisper server lifecycle (lazy start)."""
 
-from cream_typer import server
+from pysar import server
 
 
 def test_ensure_running_noop_when_alive(monkeypatch):

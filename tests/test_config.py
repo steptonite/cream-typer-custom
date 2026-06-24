@@ -6,7 +6,7 @@ dicts and the relevant test goes red.
 
 import pytest
 
-from cream_typer.config import DEFAULT_MODE, MENU_MODES, MODE_LABELS, MODES
+from pysar.config import DEFAULT_MODE, MENU_MODES, MODE_LABELS, MODES
 
 
 def test_modes_and_labels_have_same_keys():
