@@ -1336,7 +1336,7 @@ class Tray:
         try:
             from AppKit import NSApplication, NSImage
 
-            icns = Path(__file__).resolve().parents[2] / "assets" / "CreamTyper.icns"
+            icns = Path(__file__).resolve().parents[2] / "assets" / "Pysar.icns"
             if icns.exists():
                 img = NSImage.alloc().initWithContentsOfFile_(str(icns))
                 if img is not None:

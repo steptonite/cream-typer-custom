@@ -42,21 +42,21 @@ run:
 up:
 	@bash scripts/start.sh
 
-# Install the Dock-less menu-bar app into /Applications + `cream` alias.
+# Install the Dock-less menu-bar app into /Applications + `pysar` alias.
 app:
 	@bash scripts/install_app.sh
 
-# Regenerate the app icon (assets/CreamTyper.icns) from scratch.
+# Regenerate the app icon (assets/Pysar.icns) from scratch.
 icon:
 	$(PY) python scripts/make_icon.py assets/icon-1024.png
-	@rm -rf assets/CreamTyper.iconset && mkdir -p assets/CreamTyper.iconset
+	@rm -rf assets/Pysar.iconset && mkdir -p assets/Pysar.iconset
 	@for sz in 16 32 64 128 256 512; do \
-		sips -z $$sz $$sz assets/icon-1024.png --out assets/CreamTyper.iconset/icon_$${sz}x$${sz}.png >/dev/null; \
-		d=$$((sz*2)); sips -z $$d $$d assets/icon-1024.png --out assets/CreamTyper.iconset/icon_$${sz}x$${sz}@2x.png >/dev/null; \
+		sips -z $$sz $$sz assets/icon-1024.png --out assets/Pysar.iconset/icon_$${sz}x$${sz}.png >/dev/null; \
+		d=$$((sz*2)); sips -z $$d $$d assets/icon-1024.png --out assets/Pysar.iconset/icon_$${sz}x$${sz}@2x.png >/dev/null; \
 	done
-	@sips -z 1024 1024 assets/icon-1024.png --out assets/CreamTyper.iconset/icon_512x512@2x.png >/dev/null
-	iconutil -c icns assets/CreamTyper.iconset -o assets/CreamTyper.icns
-	@rm -rf assets/CreamTyper.iconset
+	@sips -z 1024 1024 assets/icon-1024.png --out assets/Pysar.iconset/icon_512x512@2x.png >/dev/null
+	iconutil -c icns assets/Pysar.iconset -o assets/Pysar.icns
+	@rm -rf assets/Pysar.iconset
 
 whisper:
 	@test -x "$(WHISPER_SERVER)" || (echo "❌ whisper-server not built. Run: make whisper-build" && exit 1)

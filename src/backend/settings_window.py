@@ -889,7 +889,7 @@ def _apply_dock_icon() -> None:
     try:
         from AppKit import NSApplication, NSImage
 
-        icns = Path(__file__).resolve().parents[2] / "assets" / "CreamTyper.icns"
+        icns = Path(__file__).resolve().parents[2] / "assets" / "Pysar.icns"
         img = NSImage.alloc().initWithContentsOfFile_(str(icns)) if icns.exists() else None
         if img is not None:
             NSApplication.sharedApplication().setApplicationIconImage_(img)
