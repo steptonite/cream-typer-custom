@@ -1,6 +1,6 @@
 """Optional on-disk recording archive + persisted settings.
 
-By default Cream Typer keeps audio only in memory (private). When the user
+By default Pysar keeps audio only in memory (private). When the user
 turns on "Save recordings" in the menu bar, each dictation's WAV is written
 here *before* transcription — so a failed/aborted run can be recovered
 (re-transcribed without re-speaking). Only the newest N files are kept; older
@@ -20,9 +20,10 @@ from .config import (
     MAX_PROFILE_SETS,
 )
 from .i18n import UI_LANGS
+from .paths import data_dir
 from .profiles import DEFAULT_PROFILES
 
-_BASE = Path.home() / "Library" / "Application Support" / "Cream Typer"
+_BASE = data_dir()
 _SETTINGS = _BASE / "settings.json"
 _RECORDINGS = _BASE / "recordings"
 
